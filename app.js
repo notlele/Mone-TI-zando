@@ -1,5 +1,5 @@
 const express = require('express');
-const indexRouter = require('./routes/home');
+const indexRouter = require('./routes/index');
 const middlewares = require('./middlewares');
 
 const app = express();
@@ -14,9 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(middlewares.path.join(__dirname, 'public')));
 app.use(middlewares.cookieParser());
 app.use(middlewares.logger('dev'));
-app.use('/', indexRouter);
-app.use('/signup', require('./routes/signup'));
-app.use('/signin', require('./routes/signin'));
+app.use('/', require('./routes/index'));
 
 
 // catch 404 and forward to error handler
