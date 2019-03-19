@@ -1,0 +1,32 @@
+{
+  "name": "mone-TI-zando",
+  "version": "1.0.0",
+  "description": "Mone(TI)zando",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BandTec/Mone-TI-zando.git"
+  },
+  "author": "mone-TI-zando",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BandTec/Mone-TI-zando/issues"
+  },
+  "homepage": "https://github.com/BandTec/Mone-TI-zando#readme"
+}
