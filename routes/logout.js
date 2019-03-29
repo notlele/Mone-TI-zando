@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var isNull = require('../script').isNull;
+let express = require('express');
+let router = express.Router();
+let isNull = require('../script').isNull;
 
 // rota para sair da sessão
 // a princípio, não precisa mexer aqui
