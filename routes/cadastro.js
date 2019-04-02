@@ -20,7 +20,7 @@ router.post('/cadastrarFuncionario', (req, res, next) => {
     }
 
 	//tirar comentário caso desejar criptografar a senha
-    //senha = cryptr.encrypt(senha);
+    senha = cryptr.encrypt(senha);
 
     console.log(`name: ${nome}, username: ${usuario}, password: ${senha}`);
 
