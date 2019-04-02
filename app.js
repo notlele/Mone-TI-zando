@@ -5,7 +5,7 @@ const middlewares = require('./middlewares');
 const app = express();
 
 app.set('views', middlewares.path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.set('view engine', 'html');
 
 // middlewares
 app.use(express.json()); // permitindo JSON no Server
