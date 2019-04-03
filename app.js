@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 
-var indexRouter = require('./routes/index');
+//var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
 var signupRouter = require('./routes/cadastro');
 var logoutRouter = require('./routes/logout');
@@ -38,8 +38,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/', indexRouter);
-app.use('/index', indexRouter);
+//app.use('/', indexRouter);
+//app.use('/index', indexRouter);
 app.use('/login', loginRouter);
 app.use('/cadastro', signupRouter);
 app.use('/logout', logoutRouter);
