@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var isNull = require('../script').isNull;
-var Database = require('../Database');
+let express = require('express');
+let router = express.Router();
+let isNull = require('../script').isNull;
+let Database = require('../Database');
 const Cryptr = require('cryptr');
 const config = require('../config');
 const cryptr = new Cryptr(config.security.key);
@@ -9,15 +9,15 @@ const cryptr = new Cryptr(config.security.key);
 // rota de autenticação
 router.post('/', (req, res, next) => {
 	console.log('tentando autenticar...');
-	
+
 	try {
-			
+
 		// após o body, são os nomes dos campos no formulário	
-		var login = req.body.login;
-		var senha = req.body.senha;
-		
-		const msgErro = {'mensagem': 'Login e/ou senha inválidos!'};
-		
+		let login = req.body.login;
+		let senha = req.body.senha;
+
+		const msgErro = { 'mensagem': 'Login e/ou senha inválidos!' };
+
 		if (isNull(login) || isNull(senha)) {
 			//console.log('Login e/ou senha inválidos');
 			res.render('login', msgErro);
@@ -36,21 +36,21 @@ router.post('/', (req, res, next) => {
 							login: linhas[0].usuario, // é 'login' o nome de seu campo?
 						};
 						req.session.user = user;
-						res.status(200).send('ok');
+						return res.status(200).send('ok');
 					} else {
-						res.status(401).send(msgErro);
+						return res.status(401).send(msgErro);
 					}
 				} else {
-					res.status(401).send(msgErro);
+					return res.status(401).send(msgErro);
 				}
 			}).catch(error => {
-				res.status(401).send(msgErro);
+				return res.status(401).send(msgErro);
 			});
 		}
-    
+
 	} catch (e) {
 		console.error(`erro: ${e}`);
-		res.send({'mensagem':`${e}`});
+		res.send({ 'mensagem': `${e}` });
 	}
 
 });
@@ -58,17 +58,17 @@ router.post('/', (req, res, next) => {
 // rota que recupera os dados do usuário na sessão
 // a princípio, não precisa mexer aqui
 router.get('/sessao', (req, res, next) => {
-    if (req.session.user && req.session.user) {
+	if (req.session.user && req.session.user) {
 		const usuario = req.session.user;
-        res.json({
-            'nome': usuario.nome,
-            'login': usuario.login,
-        });
-    } else {
-        res.status(401).json({
-            'mensagem': 'Nenhum usuário na sessão'
-        });
-    }
+		res.json({
+			'nome': usuario.nome,
+			'login': usuario.login,
+		});
+	} else {
+		return res.status(401).json({
+			'mensagem': 'Nenhum usuário na sessão'
+		});
+	}
 });
 
 module.exports = router;
