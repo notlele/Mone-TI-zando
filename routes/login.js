@@ -1,7 +1,7 @@
-let express = require('express');
-let router = express.Router();
-let isNull = require('../script').isNull;
-let Database = require('../Database');
+var express = require('express');
+var router = express.Router();
+var isNull = require('../script').isNull;
+var Database = require('../Database');
 const Cryptr = require('cryptr');
 const config = require('../config');
 const cryptr = new Cryptr(config.security.key);
@@ -13,11 +13,12 @@ router.post('/', (req, res, next) => {
 	try {
 			
 		// após o body, são os nomes dos campos no formulário	
-		let {login, senha} = req.body
+		var login = req.body.login;
+		var senha = req.body.senha;
 		
 		const msgErro = {'mensagem': 'Login e/ou senha inválidos!'};
 		
-		if (login === null || senha === null) {
+		if (isNull(login) || isNull(senha)) {
 			//console.log('Login e/ou senha inválidos');
 			res.render('login', msgErro);
 		} else {
@@ -69,4 +70,5 @@ router.get('/sessao', (req, res, next) => {
         });
     }
 });
+
 module.exports = router;

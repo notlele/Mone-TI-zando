@@ -1,33 +1,27 @@
 {
-  "name": "moneTIzando",
-  "version": "1.0.0",
-  "description": "Mone(TI)zando",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+  "name": "pi-ads-2018-2",
+  "version": "0.0.0",
+  "private": false,
+  "engines": {
+    "node": "10.15.1"
   },
   "dependencies": {
-    "cookie-parser": "^1.4.4",
-    "debug": "^2.6.9",
-    "ejs": "^2.6.1",
+    "async": "^2.6.2",
+    "bcrypt": "^3.0.5",
+    "bootstrap": "^4.3.1",
+    "config": "^3.0.1",
+    "cryptr": "^4.0.2",
+    "database": "^0.0.2",
     "express": "^4.16.4",
-    "hbs": "^4.0.3",
-    "http-errors": "^1.6.3",
-    "morgan": "^1.9.1",
-    "path": "^0.12.7"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.10"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BandTec/Mone-TI-zando.git"
-  },
-  "author": "mone-TI-zando",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/BandTec/Mone-TI-zando/issues"
+    "express-session": "^1.15.6",
+    "html5": "^1.0.5",
+    "http-error": "^0.0.6",
+    "mssql": "^5.0.5",
+    "mysql": "^2.16.0",
+    "node": "^11.12.0",
+    "nodemailer": "^6.0.0",
+    "nodemon": "^1.18.10",
+    "script": "^0.1.4",
+    "stream-http": "^3.0.0"
   }
 }
