@@ -1,29 +1,46 @@
 const express = require('express');
 let createError = require('http-errors');
+let path = require('path');
 
 
 const app = express();
+let indexRouter = require('./routes/index');
+
+app.use('/public/index', indexRouter);
+app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use('/index', indexRouter);
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  return res.status(err.status || 500);
+  res.render('error');
+});
 
 module.exports = app;
 
 /*
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var session = require('express-session');
+let createError = require('http-errors');
+let express = require('express');
+let path = require('path');
+let cookieParser = require('cookie-parser');
+let logger = require('morgan');
+let session = require('express-session');
 
-//var indexRouter = require('./routes/index');
-var loginRouter = require('./routes/login');
-var signupRouter = require('./routes/cadastro');
-var logoutRouter = require('./routes/logout');
-var leituraRouter = require('./routes/leitura');
+//let indexRouter = require('./routes/index');
+let loginRouter = require('./routes/login');
+let signupRouter = require('./routes/cadastro');
+let logoutRouter = require('./routes/logout');
+let leituraRouter = require('./routes/leitura');
 
-var app = express();
+let app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
