@@ -1,6 +1,6 @@
 # Mone(TI)zando
 
-Node version: 10.15.1 stable
+Node version: 10.14.1 stable
 
 html archive as html format
 
