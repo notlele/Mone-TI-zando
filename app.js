@@ -15,13 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', function (req, res) {
-  // Cookies that have not been signed
-  console.log('Cookies: ', req.cookies)
- 
-  // Cookies that have been signed
-  console.log('Signed Cookies: ', req.signedCookies)
-});
 
 
 app.use((req, res, next) => {
@@ -44,5 +37,15 @@ app.use(function(err, req, res, next) {
   return res.status(err.status || 500);
   return res.render('error');
 });
+
+
+
+/*app.get('/', function (req, res) {
+  // Cookies that have not been signed
+  console.log('Cookies: ', req.cookies)
+ 
+  // Cookies that have been signed
+  console.log('Signed Cookies: ', req.signedCookies)
+}); */
 
 module.exports = app;
