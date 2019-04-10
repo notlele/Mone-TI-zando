@@ -40,12 +40,12 @@ app.use(function(err, req, res, next) {
 
 
 
-/*app.get('/', function (req, res) {
+app.get('/', function(req, res) {
   // Cookies that have not been signed
   console.log('Cookies: ', req.cookies)
  
   // Cookies that have been signed
   console.log('Signed Cookies: ', req.signedCookies)
-}); */
+}); 
 
 module.exports = app;
