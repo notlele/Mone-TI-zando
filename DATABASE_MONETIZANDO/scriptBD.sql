@@ -16,7 +16,9 @@ create table TBR_AGENCIA(
     
 create table TBD_CAIXA(
 	idCaixa varchar(2) primary key,
-    idAgencia int
+    idBanco
+    idAgencia int;
+    idMonitoramento int;
     );
 
 create table TBR_MONITORAMENTO(
@@ -24,32 +26,20 @@ create table TBR_MONITORAMENTO(
     idBanco int;
     idAgencia int;
     idCaixa int;
-    codBarras varchar(50)
-    );
-    
-create table TBD_CPU (
-    idCpu int primary key;
+    CPU 
     idMax float;
     idMin float;
-    idUptime float;
-    idDowntime float;
+    idUptime time;
+    idDowntime time;
     );
     
-create table TBD_MEMORIA (
-    idCpu int primary key;
-    idMax float;
-    idMin float;
-    idUptime float;
-    idDowntime float;
-    );
-    
-create table TBD_DISCO (
-    idCpu int primary key;
-    idMax float;
-    idMin float;
-    idUptime float;
-    idDowntime float;
-    );
+
+
+alter table TBR_AGENCIA add foreign key (idBanco) references TBD_BANCO(idBanco);
+
+alter table TBR_MONITORAMENTO add foreign key (idBanco) references TBD_BANCO(idBanco);
+alter table TBR_MONITORAMENTO add foreign key (idAgencia) references TBR_AGENCIA(idAgencia);
+alter table TBR_MONITORAMENTO add foreign key (idCaixa) references TBD_CAIXA(idCaixa);
 
 
 
