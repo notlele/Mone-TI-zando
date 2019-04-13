@@ -6,11 +6,13 @@
     "node": "10.14.1"
   },
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "start": "node bin/www",
+    "dev": "nodemon bin/www"
   },
   "dependencies": {
     "cookie-parser": "^1.4.4",
+    "cryptr": "^4.0.2",
+    "debug": "^4.1.1",
     "error": "^7.0.2",
     "express": "^4.16.4",
     "http-errors": "^1.7.2",
