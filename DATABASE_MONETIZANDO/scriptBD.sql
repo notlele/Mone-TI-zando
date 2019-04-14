@@ -4,7 +4,7 @@ create table TBD_BANCO(
     CNPJ char(14),
     telefone char(15),
     email varchar(30),
-    tipoContrato varchar(50)
+    tipoContrato varchar(50),
     qtdeAgencia char(6));
     
 create table TBR_AGENCIA(
@@ -16,21 +16,21 @@ create table TBR_AGENCIA(
     
 create table TBD_CAIXA(
 	idCaixa varchar(2) primary key,
-    idBanco
-    idAgencia int;
-    idMonitoramento int;
+    idBanco int,
+    idAgencia int,
+    idMonitoramento int
     );
 
 create table TBR_MONITORAMENTO(
 	idMonitoramento int primary key auto_increment,
-    idBanco int;
-    idAgencia int;
-    idCaixa int;
-    CPU 
-    idMax float;
-    idMin float;
-    idUptime time;
-    idDowntime time;
+    idBanco int,
+    idAgencia int auto_increment,
+    idCaixa int,
+    CPU_USE int,
+    idMax float,
+    idMin float,
+    idUptime time,
+    idDowntime time
     );
     
 
