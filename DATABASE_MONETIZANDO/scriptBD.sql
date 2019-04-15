@@ -21,25 +21,35 @@ create table TBD_CAIXA(
     idMonitoramento int
     );
 
-create table TBR_MONITORAMENTO(
+create table TBD_MONITORAMENTO(
 	idMonitoramento int primary key auto_increment,
     idBanco int,
     idAgencia int auto_increment,
     idCaixa int,
     CPU_USE int,
-    idMax float,
-    idMin float,
-    idUptime time,
-    idDowntime time
+    cpuMax float,
+    cpuMin float,
+    cpuUptime time,
+    cpuDowntime time,
+    MEMORIA_USE int,
+    memoriaMax float,
+    memoriaMin float,
+    memoriaUptime time,
+    memoriaDowntime time,
+    DISCO_USE int,
+    discoMax float,
+    discoMin float,
+    discoUptime time,
+    discoDowntime time
     );
     
 
 
 alter table TBR_AGENCIA add foreign key (idBanco) references TBD_BANCO(idBanco);
 
-alter table TBR_MONITORAMENTO add foreign key (idBanco) references TBD_BANCO(idBanco);
-alter table TBR_MONITORAMENTO add foreign key (idAgencia) references TBR_AGENCIA(idAgencia);
-alter table TBR_MONITORAMENTO add foreign key (idCaixa) references TBD_CAIXA(idCaixa);
+alter table TBD_MONITORAMENTO add foreign key (idBanco) references TBD_BANCO(idBanco);
+alter table TBD_MONITORAMENTO add foreign key (idAgencia) references TBR_AGENCIA(idAgencia);
+alter table TBD_MONITORAMENTO add foreign key (idCaixa) references TBD_CAIXA(idCaixa);
 
 
 
