@@ -16,7 +16,7 @@ router.post('/cadastrarFuncionario', (req, res, next) => {
     let cpf = req.body.cpf;
 
     if (isNull(nome) || isNull(usuario) || isNull(senha)) {
-        res.status(400).json({'mensagem': 'Nome, login e senha são obrigatórios'});
+        res.status(400).send({'mensagem': 'Nome, login e senha são obrigatórios'});
     }
 
 	//tirar comentário caso desejar criptografar a senha
@@ -29,7 +29,7 @@ router.post('/cadastrarFuncionario', (req, res, next) => {
         return res.status(302).redirect('/login');
     }).catch(erro => {
 		console.error(`Erro: ${erro}`);
-        res.status(400).json({'mensagem':`Erro ao cadastrar: ${erro}`});
+        res.status(400).send({'mensagem':`Erro ao cadastrar: ${erro}`});
     });
 
 });
