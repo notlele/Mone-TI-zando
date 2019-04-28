@@ -91,3 +91,23 @@
 
 </body>
 </html>
+
+<script>
+	function autenticar() {
+		let dados = $('#formLogin').serialize();
+		$.ajax({
+				url : "/login",
+				type: 'POST',
+				data : dados
+		})
+		.done(function(resposta){ 
+			window.location.href='/grafico.html';
+		})
+		.fail(function(jqXHR, textStatus){ 
+			alert(jqXHR.responseJSON.mensagem);
+		});
+		return false;
+	}
+
+
+</script>
