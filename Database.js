@@ -12,6 +12,7 @@ module.exports = {
         });
       }
 
+
       console.log("Establishing connection to Database...");
       try {
         const pool = await new sql.ConnectionPool(config).connect();
