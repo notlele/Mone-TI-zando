@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 const config = require("./config").database;
 const isNull = require("./script").isNull;
 const sql = require("mssql");

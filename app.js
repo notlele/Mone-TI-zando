@@ -2,9 +2,13 @@ const express = require('express');
 let createError = require('http-errors');
 let path = require('path');
 const cookieParser = require('cookie-parser');
+const logger = require("morgan");
+const createError = require("http-errors");
 
 
-let indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
+const loginRouter = require("./routes/login");
+const logoutRouter = require("./routes/logout");
 
 const app = express();
 
@@ -12,6 +16,7 @@ const app = express();
 app.set('public', path.join(__dirname, 'public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(logger("dev"));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -21,6 +26,8 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/', indexRouter);
+app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 
 
 
@@ -35,7 +42,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   return res.status(err.status || 500);
-  return res.render('error');
+  res.render('err');
 });
 
 
