@@ -7,8 +7,8 @@ const createError = require("http-errors");
 
 
 const indexRouter = require('./routes/index');
-//const loginRouter = require("./routes/login");
-//const logoutRouter = require("./routes/logout");
+const loginRouter = require("./routes/login");
+const logoutRouter = require("./routes/logout");
 
 const app = express();
 
@@ -26,8 +26,8 @@ app.use((req, res, next) => {
   next();
 });
 app.use('/', indexRouter);
-//app.use("/login", loginRouter);
-//app.use("/logout", logoutRouter);
+app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 
 
 
