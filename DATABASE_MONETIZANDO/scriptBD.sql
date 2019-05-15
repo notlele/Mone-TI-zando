@@ -42,7 +42,7 @@ create table TBD_MONITORAMENTO(
     discoMin float,
     discoUptime time,
     discoDowntime time,
-    momento datetime,
+    momento datetime
     );
     
 
