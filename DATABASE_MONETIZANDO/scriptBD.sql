@@ -5,8 +5,9 @@ create table TBD_BANCO(
     telefone char(15),
     email varchar(30),
     tipoContrato varchar(50),
-    qtdeAgencia char(6)
-    senha varchar(30));
+    qtdeAgencia char(6),
+    senha varchar(30)
+    );
     
 create table TBR_AGENCIA(
 	idAgencia int primary key,
