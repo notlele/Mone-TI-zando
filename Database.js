@@ -1,7 +1,7 @@
-'use strict';
-const config = require("./config").database;
-const isNull = require("./script").isNull;
-const sql = require("mssql");
+'use strict'; //Retrocompatibilidade com outras versoes do JS (para máquinas mais antigas)
+const config = require("./config").database; //configurações do banco
+const isNull = require("./script").isNull; //script de tudo nulo
+const sql = require("mssql"); //Instancia de variavel para o SQL Server Azure
 
 module.exports = {
   query: async queryString => {
