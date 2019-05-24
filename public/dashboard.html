@@ -344,6 +344,25 @@
 </body>
 
 </html>
+<script>
+  carregarUsuario();
+  
+  function carregarUsuario() {
+   $.ajax({
+     cache: false,
+     method: "get",
+     url: "/login/sessao",
+     success: function (data) {
+       $('#b_usuario').html(data.nome);
+       $('#div_usuario').show();
+     },
+     error: function (e) {
+       window.location.href = 'login.html';
+     }
+   });
+ }
+ 
+ </script>
 
 <script>
 
@@ -370,21 +389,4 @@
         break;
     }
   });
-
-// carregarUsuario();
-// function carregarUsuario() {
-//   $.ajax({
-//     cache: false,
-//     method: "get",
-//     url: "/login/sessao",
-//     success: function (data) {
-//       $('#b_usuario').html(data.nome);
-//       $('#div_usuario').show();
-//     },
-//     error: function (e) {
-//       window.location.href = 'login.html';
-//     }
-//   });
-// }
-
 </script>
