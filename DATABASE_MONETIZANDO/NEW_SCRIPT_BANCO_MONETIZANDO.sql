@@ -43,7 +43,7 @@ create table TBR_AGENCIA(
 	idAgencia int primary key,
     idBanco int,  
     qtdeCaixas char(2),
-	add foreign key (idBanco) references TBD_BANCO(idBanco)
+	CONSTRAINT FK_idBanco_agencia foreign key (idBanco) references TBD_BANCO(idBanco)
     );
 	
 	create table TBR_MONITORAMENTO(
@@ -56,9 +56,12 @@ create table TBR_AGENCIA(
 	idCpu int,
 	idHd int,
 	idMemoria int,
-	add foreign key (idCpu) references TBD_CPU(idCpu),
-	add foreign key (idHd) references TBD_HD(idHd),
-	add foreign key (idMemoria) references TBD_MEMORIA(idMemoria)
+	CONSTRAINT FK_idCpu
+	foreign key (idCpu) references TBD_CPU(idCpu),
+	CONSTRAINT FK_idHd
+	foreign key (idHd) references TBD_HD(idHd),
+	CONSTRAINT FK_idMemoria
+	foreign key (idMemoria) references TBD_MEMORIA(idMemoria)
 	);
 	--
     
@@ -68,10 +71,31 @@ create table TBR_CAIXA(
     idBanco int,
     idAgencia int,
     idMonitoramento int,
-	add foreign key (idBanco) references TBD_BANCO(idBanco),
-	add foreign key (idAgencia) references TBR_AGENCIA(idAgencia),
-	add foreign key (idMonitoramento) references TBR_MONITORAMENTO(idMonitoramento)
+	CONSTRAINT FK_idBanco
+	foreign key (idBanco) references TBD_BANCO(idBanco),
+	CONSTRAINT FK_idAgencia_caixa
+	foreign key (idAgencia) references TBR_AGENCIA(idAgencia),
+	foreign key (idMonitoramento) references TBR_MONITORAMENTO(idMonitoramento)
     );
+	
+
+CREATE TABLE TBD_CMD_REMOTO(
+	ID_CMD_REMOTO INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	ID_CAIXA INT,
+	COMANDO VARCHAR(9000),
+	JA_EXECUTADO CHAR(1)
+	CONTINUAR_EXECUTANDO CHAR(1),
+	MOMENTO DATETIME
+);
+
+
+CREATE TABLE TBA_CMD_REMOTO_CONTEUDO (
+	ID_CMD_REMOTO_CONTEUDO int PRIMARY KEY IDENTITY (1,1) NOT NULL,
+	ID_CMD_REMOTO INT,
+	DT_CADASTRO DATETIME,
+	RETORNO_CMD NVARCHAR(max)
+);
+
 	
 
 	
