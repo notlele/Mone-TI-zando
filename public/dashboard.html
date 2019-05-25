@@ -13,6 +13,19 @@
   <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="dash/styles/shards-dashboards.1.1.0.min.css">
   <link rel="stylesheet" href="dash/styles/extras.1.1.0.min.css">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  <!-- transition fade : tabs -->
+  <style>
+    .tabcontent {
+      animation: fadeEffect 1s; /* Fading effect takes 1 second */
+    }
+
+    /* Go from zero to full opacity */
+    @keyframes fadeEffect {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
 </head>
 
 <body class="h-100">
@@ -43,31 +56,31 @@
         <div class="nav-wrapper">
           <ul class="nav flex-column" id="selectCaixa">
             <li class="nav-item">
-              <a class="nav-link" id="selectCaixa1" value="c1" href="#">
+              <a class="nav-link tablinks" onclick="selecionarCaixa(event, 'c1')" href="#c1">
                 <i class="material-icons">account_balance</i>
                 CAIXA 01
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="selectCaixa2" value="c2" href="#">
+              <a class="nav-link tablinks" onclick="selecionarCaixa(event, 'c2')" href="#c2">
                 <i class="material-icons">account_balance</i>
                 CAIXA 02
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="selectCaixa3" value="c3" href="#">
+              <a class="nav-link tablinks" onclick="selecionarCaixa(event, 'c3')" href="#c3">
                 <i class="material-icons">account_balance</i>
                 CAIXA 03
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="selectCaixa4" value="c4" href="#">
+              <a class="nav-link tablinks" onclick="selecionarCaixa(event, 'c4')" href="#c4">
                 <i class="material-icons">account_balance</i>
                 CAIXA 04
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="selectCaixa5" value="c5" href="#">
+              <a class="nav-link tablinks" onclick="selecionarCaixa(event, 'c5')" href="#c5">
                 <i class="material-icons">account_balance</i>
                 CAIXA 05
               </a>
@@ -76,9 +89,12 @@
         </div>
       </aside>
       <!-- End Main Sidebar -->
+
+
+
       <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
+        <!-- Main Navbar -->
         <div class="main-navbar sticky-top bg-white">
-          <!-- Main Navbar -->
           <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
             <a class="navbar-brand w-100 ml-4 mt-2 d-none d-md-flex d-lg-flex" href="#">BRADESCO</a>
             <ul class="navbar-nav border-left flex-row ">
@@ -87,7 +103,7 @@
                   aria-haspopup="true" aria-expanded="false">
                   <div class="nav-link-icon__wrapper">
                     <i class="material-icons">&#xE7F4;</i>
-                    <span class="badge badge-pill badge-danger">2</span>
+                    <!-- <span class="badge badge-pill badge-danger">2</span> -->
                   </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-small" aria-labelledby="dropdownMenuLink">
@@ -102,7 +118,7 @@
                       <p><span class="text-danger text-semibold">CAIXA 02</span> apresentou erro </p>
                     </div>
                   </a>
-                  <a class="dropdown-item" href="#">
+                  <!-- <a class="dropdown-item" href="#">
                     <div class="notification__icon-wrapper">
                       <div class="notification__icon">
                         <i class="material-icons">&#xE8D1;</i>
@@ -113,7 +129,7 @@
                       <p>Last week your store’s sales count decreased by
                         <span class="text-danger text-semibold">5.52%</span>. It could have been worse!</p>
                     </div>
-                  </a>
+                  </a> -->
                   <a class="dropdown-item notification__all text-center" href="#"> Ver todas as notificações</a>
                 </div>
               </li>
@@ -150,7 +166,7 @@
         <!-- CAIXA 01 -->
         <!-- id + style para js 'selectCaixa': ao clicar na tab correspondente na sidebar, 
           ele oculta o anterior e chama o selecionado -->
-        <div class="main-content-container container-fluid px-4" id="abaCaixa1" style="display: block;">
+        <div class="main-content-container container-fluid px-4 tabcontent" id="c1" style="display: block;">
           <!-- Page Header -->
           <div class="page-header row no-gutters py-4">
             <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
@@ -167,13 +183,13 @@
                   <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
                       <span class="stats-small__label text-uppercase">CPU</span>
-                      <h6 class="stats-small__value count my-3">4342</h6>
+                      <h6 class="stats-small__value count my-3"></h6> <!-- valor da cpu -->
                     </div>
                     <div class="stats-small__data">
                       <span class="stats-small__percentage stats-small__percentage--increase"></span>
                     </div>
                   </div>
-                  <canvas height="120" class="blog-overview-stats-small-1"></canvas>
+                  <canvas height="120" class="blog-overview-stats-small-1"></canvas> <!-- canvas cpu -->
                 </div>
               </div>
             </div>
@@ -183,13 +199,13 @@
                   <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
                       <span class="stats-small__label text-uppercase">RAM</span>
-                      <h6 class="stats-small__value count my-3"></h6>
+                      <h6 class="stats-small__value count my-3"></h6> <!-- valor da ram -->
                     </div>
                     <div class="stats-small__data">
                       <span class="stats-small__percentage stats-small__percentage--increase"></span>
                     </div>
                   </div>
-                  <canvas height="120" class="blog-overview-stats-small-2"></canvas>
+                  <canvas height="120" class="blog-overview-stats-small-2"></canvas> <!-- canvas ram -->
                 </div>
               </div>
             </div>
@@ -199,13 +215,13 @@
                   <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
                       <span class="stats-small__label text-uppercase">HD</span>
-                      <h6 class="stats-small__value count my-3"></h6>
+                      <h6 class="stats-small__value count my-3"></h6> <!-- valor do hd -->
                     </div>
                     <div class="stats-small__data">
                       <span class="stats-small__percentage stats-small__percentage--decrease"></span>
                     </div>
                   </div>
-                  <canvas height="120" class="blog-overview-stats-small-3"></canvas>
+                  <canvas height="120" class="blog-overview-stats-small-3"></canvas> <!-- canvas hd -->
                 </div>
               </div>
             </div>
@@ -215,13 +231,13 @@
                   <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
                       <span class="stats-small__label text-uppercase">PROCESSO bco</span>
-                      <h6 class="stats-small__value count my-3"></h6>
+                      <h6 class="stats-small__value count my-3"></h6> <!-- valor do processo bco -->
                     </div>
                     <div class="stats-small__data">
                       <span class="stats-small__percentage stats-small__percentage--increase"></span>
                     </div>
                   </div>
-                  <canvas height="120" class="blog-overview-stats-small-4"></canvas>
+                  <canvas height="120" class="blog-overview-stats-small-4"></canvas> <!-- canvas processo bco -->
                 </div>
               </div>
             </div>
@@ -231,13 +247,13 @@
                   <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
                       <span class="stats-small__label text-uppercase">TOTAL PROCESSOS</span>
-                      <h6 class="stats-small__value count my-3"></h6>
+                      <h6 class="stats-small__value count my-3"></h6> <!-- valor total de processos -->
                     </div>
                     <div class="stats-small__data">
                       <span class="stats-small__percentage stats-small__percentage--decrease"></span>
                     </div>
                   </div>
-                  <canvas height="120" class="blog-overview-stats-small-5"></canvas>
+                  <canvas height="120" class="blog-overview-stats-small-5"></canvas> <!-- canvas de processos -->
                 </div>
               </div>
             </div>
@@ -248,7 +264,7 @@
             <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
               <div class="card card-small">
                 <div class="card-header border-bottom">
-                  <h6 class="m-0">//card title</h6>
+                  <h6 class="m-0">line chart</h6>
                 </div>
                 <div class="card-body pt-0">
                   <div class="row border-bottom py-2 bg-light">
@@ -265,7 +281,7 @@
                       </div>
                     </div>
                   </div>
-                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"></canvas>
+                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"></canvas> <!-- canvas do line chart -->
                 </div>
               </div>
             </div>
@@ -274,10 +290,10 @@
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card card-small h-100">
                 <div class="card-header border-bottom">
-                  <h6 class="m-0">//card title</h6>
+                  <h6 class="m-0">pie chart</h6>
                 </div>
                 <div class="card-body d-flex py-0">
-                  <canvas height="220" class="blog-users-by-device m-auto"></canvas>
+                  <canvas height="220" class="blog-users-by-device m-auto"></canvas> <!-- canvas do pie chart -->
                 </div>
                 <div class="card-footer border-top">
                   <div class="row">
@@ -294,20 +310,621 @@
               </div>
             </div>
             <!-- End Users By Device Stats -->
-
-
-
-
           </div>
         </div>
+
+
+
+        <!-- CAIXA 02 -->
+        <!-- id + style para js 'selectCaixa': ao clicar na tab correspondente na sidebar, 
+          ele oculta o anterior e chama o selecionado -->
+        <div class="main-content-container container-fluid px-4 tabcontent" id="c2" style="display: none;">
+          <!-- Page Header -->
+          <div class="page-header row no-gutters py-4">
+            <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+              <span class="text-uppercase page-subtitle">CAIXA 02</span>
+              <h3 class="page-title">Overview</h3>
+            </div>
+          </div>
+          <!-- End Page Header -->
+          <!-- Small Stats Blocks -->
+          <div class="row">
+              <div class="col-lg col-md-6 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">CPU</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor da cpu -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-1"></canvas> <!-- canvas cpu -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-6 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">RAM</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor da ram -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-2"></canvas> <!-- canvas ram -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">HD</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor do hd -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--decrease"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-3"></canvas> <!-- canvas hd -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">PROCESSO bco</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor do processo bco -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-4"></canvas> <!-- canvas processo bco -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-12 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">TOTAL PROCESSOS</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor total de processos -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--decrease"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-5"></canvas> <!-- canvas de processos -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Small Stats Blocks -->
+            <div class="row">
+              <!-- Users Stats -->
+              <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">line chart</h6>
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="row border-bottom py-2 bg-light">
+                      <div class="col-12 col-sm-6">
+                        <div id="blog-overview-date-range" class="input-daterange input-group input-group-sm my-auto ml-auto mr-auto ml-sm-auto mr-sm-0"
+                          style="max-width: 350px;">
+                          <input type="text" class="input-sm form-control" name="start" placeholder="Start Date" id="blog-overview-date-range-1">
+                          <input type="text" class="input-sm form-control" name="end" placeholder="End Date" id="blog-overview-date-range-2">
+                          <span class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="material-icons"></i>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"></canvas> <!-- canvas do line chart -->
+                  </div>
+                </div>
+              </div>
+              <!-- End Users Stats -->
+              <!-- Users By Device Stats -->
+              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card card-small h-100">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">pie chart</h6>
+                  </div>
+                  <div class="card-body d-flex py-0">
+                    <canvas height="220" class="blog-users-by-device m-auto"></canvas> <!-- canvas do pie chart -->
+                  </div>
+                  <div class="card-footer border-top">
+                    <div class="row">
+                      <div class="col">
+                        <select class="custom-select custom-select-sm" style="max-width: 130px;">
+                          <option selected>Last Week</option>
+                          <option value="1">Today</option>
+                          <option value="2">Last Month</option>
+                          <option value="3">Last Year</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Users By Device Stats -->
+            </div>
+          </div>
+
+
+
+        <!-- CAIXA 03 -->
+        <!-- id + style para js 'selectCaixa': ao clicar na tab correspondente na sidebar, 
+          ele oculta o anterior e chama o selecionado -->
+        <div class="main-content-container container-fluid px-4 tabcontent" id="c3" style="display: none;">
+          <!-- Page Header -->
+          <div class="page-header row no-gutters py-4">
+            <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+              <span class="text-uppercase page-subtitle">CAIXA 03</span>
+              <h3 class="page-title">Overview</h3>
+            </div>
+          </div>
+          <!-- End Page Header -->
+          <!-- Small Stats Blocks -->
+          <div class="row">
+              <div class="col-lg col-md-6 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">CPU</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor da cpu -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-1"></canvas> <!-- canvas cpu -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-6 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">RAM</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor da ram -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-2"></canvas> <!-- canvas ram -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">HD</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor do hd -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--decrease"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-3"></canvas> <!-- canvas hd -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">PROCESSO bco</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor do processo bco -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-4"></canvas> <!-- canvas processo bco -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-12 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">TOTAL PROCESSOS</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor total de processos -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--decrease"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-5"></canvas> <!-- canvas de processos -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Small Stats Blocks -->
+            <div class="row">
+              <!-- Users Stats -->
+              <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">line chart</h6>
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="row border-bottom py-2 bg-light">
+                      <div class="col-12 col-sm-6">
+                        <div id="blog-overview-date-range" class="input-daterange input-group input-group-sm my-auto ml-auto mr-auto ml-sm-auto mr-sm-0"
+                          style="max-width: 350px;">
+                          <input type="text" class="input-sm form-control" name="start" placeholder="Start Date" id="blog-overview-date-range-1">
+                          <input type="text" class="input-sm form-control" name="end" placeholder="End Date" id="blog-overview-date-range-2">
+                          <span class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="material-icons"></i>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"></canvas> <!-- canvas do line chart -->
+                  </div>
+                </div>
+              </div>
+              <!-- End Users Stats -->
+              <!-- Users By Device Stats -->
+              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card card-small h-100">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">pie chart</h6>
+                  </div>
+                  <div class="card-body d-flex py-0">
+                    <canvas height="220" class="blog-users-by-device m-auto"></canvas> <!-- canvas do pie chart -->
+                  </div>
+                  <div class="card-footer border-top">
+                    <div class="row">
+                      <div class="col">
+                        <select class="custom-select custom-select-sm" style="max-width: 130px;">
+                          <option selected>Last Week</option>
+                          <option value="1">Today</option>
+                          <option value="2">Last Month</option>
+                          <option value="3">Last Year</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Users By Device Stats -->
+            </div>
+          </div>
+
+
+
+        <!-- CAIXA 04 -->
+        <!-- id + style para js 'selectCaixa': ao clicar na tab correspondente na sidebar, 
+          ele oculta o anterior e chama o selecionado -->
+        <div class="main-content-container container-fluid px-4 tabcontent" id="c4" style="display: none;">
+          <!-- Page Header -->
+          <div class="page-header row no-gutters py-4">
+            <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+              <span class="text-uppercase page-subtitle">CAIXA 04</span>
+              <h3 class="page-title">Overview</h3>
+            </div>
+          </div>
+          <!-- End Page Header -->
+          <!-- Small Stats Blocks -->
+          <div class="row">
+              <div class="col-lg col-md-6 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">CPU</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor da cpu -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-1"></canvas> <!-- canvas cpu -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-6 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">RAM</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor da ram -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-2"></canvas> <!-- canvas ram -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">HD</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor do hd -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--decrease"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-3"></canvas> <!-- canvas hd -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">PROCESSO bco</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor do processo bco -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-4"></canvas> <!-- canvas processo bco -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-12 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">TOTAL PROCESSOS</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor total de processos -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--decrease"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-5"></canvas> <!-- canvas de processos -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Small Stats Blocks -->
+            <div class="row">
+              <!-- Users Stats -->
+              <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">line chart</h6>
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="row border-bottom py-2 bg-light">
+                      <div class="col-12 col-sm-6">
+                        <div id="blog-overview-date-range" class="input-daterange input-group input-group-sm my-auto ml-auto mr-auto ml-sm-auto mr-sm-0"
+                          style="max-width: 350px;">
+                          <input type="text" class="input-sm form-control" name="start" placeholder="Start Date" id="blog-overview-date-range-1">
+                          <input type="text" class="input-sm form-control" name="end" placeholder="End Date" id="blog-overview-date-range-2">
+                          <span class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="material-icons"></i>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"></canvas> <!-- canvas do line chart -->
+                  </div>
+                </div>
+              </div>
+              <!-- End Users Stats -->
+              <!-- Users By Device Stats -->
+              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card card-small h-100">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">pie chart</h6>
+                  </div>
+                  <div class="card-body d-flex py-0">
+                    <canvas height="220" class="blog-users-by-device m-auto"></canvas> <!-- canvas do pie chart -->
+                  </div>
+                  <div class="card-footer border-top">
+                    <div class="row">
+                      <div class="col">
+                        <select class="custom-select custom-select-sm" style="max-width: 130px;">
+                          <option selected>Last Week</option>
+                          <option value="1">Today</option>
+                          <option value="2">Last Month</option>
+                          <option value="3">Last Year</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Users By Device Stats -->
+            </div>
+          </div>
+
+
+        <!-- CAIXA 05 -->
+        <!-- id + style para js 'selectCaixa': ao clicar na tab correspondente na sidebar, 
+          ele oculta o anterior e chama o selecionado -->
+        <div class="main-content-container container-fluid px-4 tabcontent" id="c5" style="display: none;">
+          <!-- Page Header -->
+          <div class="page-header row no-gutters py-4">
+            <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+              <span class="text-uppercase page-subtitle">CAIXA 05</span>
+              <h3 class="page-title">Overview</h3>
+            </div>
+          </div>
+          <!-- End Page Header -->
+          <!-- Small Stats Blocks -->
+          <div class="row">
+              <div class="col-lg col-md-6 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">CPU</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor da cpu -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-1"></canvas> <!-- canvas cpu -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-6 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">RAM</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor da ram -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-2"></canvas> <!-- canvas ram -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">HD</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor do hd -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--decrease"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-3"></canvas> <!-- canvas hd -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-6 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">PROCESSO bco</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor do processo bco -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--increase"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-4"></canvas> <!-- canvas processo bco -->
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg col-md-4 col-sm-12 mb-4">
+                <div class="stats-small stats-small--1 card card-small">
+                  <div class="card-body p-0 d-flex">
+                    <div class="d-flex flex-column m-auto">
+                      <div class="stats-small__data text-center">
+                        <span class="stats-small__label text-uppercase">TOTAL PROCESSOS</span>
+                        <h6 class="stats-small__value count my-3"></h6> <!-- valor total de processos -->
+                      </div>
+                      <div class="stats-small__data">
+                        <span class="stats-small__percentage stats-small__percentage--decrease"></span>
+                      </div>
+                    </div>
+                    <canvas height="120" class="blog-overview-stats-small-5"></canvas> <!-- canvas de processos -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Small Stats Blocks -->
+            <div class="row">
+              <!-- Users Stats -->
+              <div class="col-lg-8 col-md-12 col-sm-12 mb-4">
+                <div class="card card-small">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">line chart</h6>
+                  </div>
+                  <div class="card-body pt-0">
+                    <div class="row border-bottom py-2 bg-light">
+                      <div class="col-12 col-sm-6">
+                        <div id="blog-overview-date-range" class="input-daterange input-group input-group-sm my-auto ml-auto mr-auto ml-sm-auto mr-sm-0"
+                          style="max-width: 350px;">
+                          <input type="text" class="input-sm form-control" name="start" placeholder="Start Date" id="blog-overview-date-range-1">
+                          <input type="text" class="input-sm form-control" name="end" placeholder="End Date" id="blog-overview-date-range-2">
+                          <span class="input-group-append">
+                            <span class="input-group-text">
+                              <i class="material-icons"></i>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"></canvas> <!-- canvas do line chart -->
+                  </div>
+                </div>
+              </div>
+              <!-- End Users Stats -->
+              <!-- Users By Device Stats -->
+              <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card card-small h-100">
+                  <div class="card-header border-bottom">
+                    <h6 class="m-0">pie chart</h6>
+                  </div>
+                  <div class="card-body d-flex py-0">
+                    <canvas height="220" class="blog-users-by-device m-auto"></canvas> <!-- canvas do pie chart -->
+                  </div>
+                  <div class="card-footer border-top">
+                    <div class="row">
+                      <div class="col">
+                        <select class="custom-select custom-select-sm" style="max-width: 130px;">
+                          <option selected>Last Week</option>
+                          <option value="1">Today</option>
+                          <option value="2">Last Month</option>
+                          <option value="3">Last Year</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- End Users By Device Stats -->
+            </div>
+          </div>
+
+
       </main>
     </div>
   </div>
-  <div class="promo-popup animated">
-    <a href="http://bit.ly/shards-dashboard-pro" class="pp-cta extra-action">
-      <img src="https://dgc2qnsehk7ta.cloudfront.net/uploads/sd-blog-promo-2.jpg"> </a>
 
-  </div>
   <!-- Logout Modal div start -->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -326,7 +943,7 @@
       </div>
     </div>
   </div>
-  <!-- Logou modal div end -->
+  <!-- Logout modal div end -->
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
@@ -366,27 +983,46 @@
 
 <script>
 
-  $("#selectCaixa").change(() => {
-    let abas = $("[id*=aba]");
-    for (let i = 0; i < abas.length; i++) {
-      $(abas[i]).hide();
+  function selecionarCaixa(evt, caixaNr) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
+
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
     }
-    switch ($("input[name=escolhaCaixa]:checked").val()) {
-      case 'c1':
-        $(abas[0]).show();
-        break;
-      case 'c2':
-        $(abas[1]).show();
-        break;
-      case 'c3':
-        $(abas[2]).show();
-        break;
-      case 'c4':
-        $(abas[3]).show();
-        break;
-      case 'c5':
-        $(abas[4]).show();
-        break;
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
+<<<<<<< HEAD
   });
 </script>
+=======
+
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(caixaNr).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+// carregarUsuario();
+// function carregarUsuario() {
+//   $.ajax({
+//     cache: false,
+//     method: "get",
+//     url: "/login/sessao",
+//     success: function (data) {
+//       $('#b_usuario').html(data.nome);
+//       $('#div_usuario').show();
+//     },
+//     error: function (e) {
+//       window.location.href = 'login.html';
+//     }
+//   });
+// }
+
+</script>
+>>>>>>> 0b9e0cdbd47d9ac1245a0c54497ddd7f13f7830d
