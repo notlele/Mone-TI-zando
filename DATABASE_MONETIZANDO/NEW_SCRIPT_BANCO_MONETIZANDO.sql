@@ -6,7 +6,8 @@ create table TBD_BANCO(
     email varchar(30),
     tipoContrato varchar(50),
     qtdeAgencia char(6),
-    senha varchar(30)
+    senha varchar(30),
+	DT_CADASTRO DATETIME,
     );
 	
 	create table TBD_CPU(
@@ -43,14 +44,13 @@ create table TBR_AGENCIA(
 	idAgencia int primary key,
     idBanco int,  
     qtdeCaixas char(2),
+	localAgencia varchar(30),
 	CONSTRAINT FK_idBanco_agencia foreign key (idBanco) references TBD_BANCO(idBanco)
+	
     );
 	
 	create table TBR_MONITORAMENTO(
 	idMonitoramento int primary key identity (1,1),
-    --idBanco int,
-    --idAgencia int,
-    --idCaixa int,
 	mac_address char(15),
 	momento datetime,
 	idCpu int,
@@ -93,7 +93,9 @@ CREATE TABLE TBA_CMD_REMOTO_CONTEUDO (
 	ID_CMD_REMOTO_CONTEUDO int PRIMARY KEY IDENTITY (1,1) NOT NULL,
 	ID_CMD_REMOTO INT,
 	DT_CADASTRO DATETIME,
-	RETORNO_CMD NVARCHAR(max)
+	RETORNO_CMD NVARCHAR(max),
+	CONSTRAINT FK_CMD_REMOTO
+	foreign key (ID_CMD_REMOTO) references TBD_CMD_REMOTO(ID_CMD_REMOTO)
 );
 
 	
