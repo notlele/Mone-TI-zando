@@ -13,6 +13,7 @@
   <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="dash/styles/shards-dashboards.1.1.0.min.css">
   <link rel="stylesheet" href="dash/styles/extras.1.1.0.min.css">
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
   <!-- transition fade : tabs -->
   <style>
@@ -102,7 +103,7 @@
         <!-- Main Navbar -->
         <div class="main-navbar sticky-top bg-white">
           <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
-            <a class="navbar-brand w-100 ml-4 mt-2 d-none d-md-flex d-lg-flex" href="#"><b id="b_usuario"> </b></a>
+            <a class="navbar-brand w-100 ml-4 mt-2 d-none d-md-flex d-lg-flex" href="#"><b id="b_usuario"></b></a>
             <ul class="navbar-nav border-left flex-row ">
               <li class="nav-item border-right dropdown notifications">
                 <a class="nav-link nav-link-icon text-center" href="#" role="button" id="dropdownMenuLink"
@@ -143,7 +144,7 @@
                 <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button"
                   aria-haspopup="true" aria-expanded="false">
                   <img class="user-avatar rounded-circle mr-2" src="dash/images/avatars/icon.png" alt="User Avatar">
-                  <span class="d-none d-md-inline-block" id="spUser"> aaa </span>
+                  <span class="d-none d-md-inline-block" id="spUser"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-small">
                   <!-- <a class="dropdown-item" href="user-profile-lite.html">
@@ -203,7 +204,7 @@
                       <span class="stats-small__percentage stats-small__percentage--increase"></span>
                     </div>
                   </div>
-                  <canvas height="120" class="blog-overview-stats-small-1"></canvas> <!-- canvas cpu -->
+                  <canvas height="120" class="blog-overview-stats-small-1"></canvas> <!-- espaço cpu -->
                 </div>
               </div>
             </div>
@@ -213,7 +214,8 @@
                   <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
                       <span class="stats-small__label text-uppercase">RAM</span>
-                      <h6 class="stats-small__value count my-3"></h6> <!-- valor da ram -->
+                      <!--Nome do hardware-->
+                      <h6 class="stats-small__value count my-3"><b id="idRam"></b></h6> <!-- valor da ram -->
                     </div>
                     <div class="stats-small__data">
                       <span class="stats-small__percentage stats-small__percentage--increase"></span>
@@ -229,7 +231,7 @@
                   <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
                       <span class="stats-small__label text-uppercase">HD</span>
-                      <h6 class="stats-small__value count my-3"></h6> <!-- valor do hd -->
+                      <h6 class="stats-small__value count my-3" id="idHd"></h6> <!-- valor do hd -->
                     </div>
                     <div class="stats-small__data">
                       <span class="stats-small__percentage stats-small__percentage--decrease"></span>
@@ -298,12 +300,14 @@
                       </div>
                     </div>
                   </div>
-                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"></canvas>
+                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"
+                    id="ramId"></canvas>
                   <!-- canvas do line chart -->
                 </div>
               </div>
             </div>
             <!-- End Users Stats -->
+
             <!-- Users By Device Stats -->
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card card-small h-100">
@@ -336,7 +340,8 @@
         <!-- CAIXA 02 -->
         <!-- id + style para js 'selectCaixa': ao clicar na tab correspondente na sidebar, 
           ele oculta o anterior e chama o selecionado -->
-        <div class="main-content-container container-fluid px-4 tabcontent" id="c2" style="display: none;">
+
+        <div class="main-content-container container-fluid px-4 tabcontent" id="c2" style="display: block;">
           <!-- Page Header -->
           <div class="page-header row no-gutters py-4">
             <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
@@ -369,7 +374,7 @@
                   <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
                       <span class="stats-small__label text-uppercase">RAM</span>
-                      <h6 class="stats-small__value count my-3"></h6> <!-- valor da ram -->
+                      <h6 class="stats-small__value count my-3" id="idRam2"></h6> <!-- valor da ram -->
                     </div>
                     <div class="stats-small__data">
                       <span class="stats-small__percentage stats-small__percentage--increase"></span>
@@ -454,12 +459,14 @@
                       </div>
                     </div>
                   </div>
-                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"></canvas>
+                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"
+                    id="ramId2"></canvas>
                   <!-- canvas do line chart -->
                 </div>
               </div>
             </div>
             <!-- End Users Stats -->
+
             <!-- Users By Device Stats -->
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card card-small h-100">
@@ -487,12 +494,15 @@
           </div>
         </div>
 
+        <!-- CAIXA 02 FIM -->
+
 
 
         <!-- CAIXA 03 -->
         <!-- id + style para js 'selectCaixa': ao clicar na tab correspondente na sidebar, 
           ele oculta o anterior e chama o selecionado -->
-        <div class="main-content-container container-fluid px-4 tabcontent" id="c3" style="display: none;">
+
+        <div class="main-content-container container-fluid px-4 tabcontent" id="c3" style="display: block;">
           <!-- Page Header -->
           <div class="page-header row no-gutters py-4">
             <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
@@ -525,7 +535,7 @@
                   <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
                       <span class="stats-small__label text-uppercase">RAM</span>
-                      <h6 class="stats-small__value count my-3"></h6> <!-- valor da ram -->
+                      <h6 class="stats-small__value count my-3" id="idRam3"></h6> <!-- valor da ram -->
                     </div>
                     <div class="stats-small__data">
                       <span class="stats-small__percentage stats-small__percentage--increase"></span>
@@ -610,12 +620,14 @@
                       </div>
                     </div>
                   </div>
-                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"></canvas>
+                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"
+                    id="ramId3"></canvas>
                   <!-- canvas do line chart -->
                 </div>
               </div>
             </div>
             <!-- End Users Stats -->
+
             <!-- Users By Device Stats -->
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card card-small h-100">
@@ -643,12 +655,14 @@
           </div>
         </div>
 
+        <!-- CAIXA 03 -->
 
 
         <!-- CAIXA 04 -->
         <!-- id + style para js 'selectCaixa': ao clicar na tab correspondente na sidebar, 
           ele oculta o anterior e chama o selecionado -->
-        <div class="main-content-container container-fluid px-4 tabcontent" id="c4" style="display: none;">
+
+        <div class="main-content-container container-fluid px-4 tabcontent" id="c4" style="display: block;">
           <!-- Page Header -->
           <div class="page-header row no-gutters py-4">
             <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
@@ -681,7 +695,7 @@
                   <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
                       <span class="stats-small__label text-uppercase">RAM</span>
-                      <h6 class="stats-small__value count my-3"></h6> <!-- valor da ram -->
+                      <h6 class="stats-small__value count my-3" id="idRam4"></h6> <!-- valor da ram -->
                     </div>
                     <div class="stats-small__data">
                       <span class="stats-small__percentage stats-small__percentage--increase"></span>
@@ -766,12 +780,14 @@
                       </div>
                     </div>
                   </div>
-                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"></canvas>
+                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"
+                    id="ramId4"></canvas>
                   <!-- canvas do line chart -->
                 </div>
               </div>
             </div>
             <!-- End Users Stats -->
+
             <!-- Users By Device Stats -->
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card card-small h-100">
@@ -799,11 +815,14 @@
           </div>
         </div>
 
+        <!-- caixa4 -->
+
 
         <!-- CAIXA 05 -->
         <!-- id + style para js 'selectCaixa': ao clicar na tab correspondente na sidebar, 
           ele oculta o anterior e chama o selecionado -->
-        <div class="main-content-container container-fluid px-4 tabcontent" id="c5" style="display: none;">
+
+        <div class="main-content-container container-fluid px-4 tabcontent" id="c5" style="display: block;">
           <!-- Page Header -->
           <div class="page-header row no-gutters py-4">
             <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
@@ -836,7 +855,7 @@
                   <div class="d-flex flex-column m-auto">
                     <div class="stats-small__data text-center">
                       <span class="stats-small__label text-uppercase">RAM</span>
-                      <h6 class="stats-small__value count my-3"></h6> <!-- valor da ram -->
+                      <h6 class="stats-small__value count my-3" id="idRam5"></h6> <!-- valor da ram -->
                     </div>
                     <div class="stats-small__data">
                       <span class="stats-small__percentage stats-small__percentage--increase"></span>
@@ -921,12 +940,14 @@
                       </div>
                     </div>
                   </div>
-                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"></canvas>
+                  <canvas height="130" style="max-width: 100% !important;" class="blog-overview-users"
+                    id="ramId5"></canvas>
                   <!-- canvas do line chart -->
                 </div>
               </div>
             </div>
             <!-- End Users Stats -->
+
             <!-- Users By Device Stats -->
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
               <div class="card card-small h-100">
@@ -953,6 +974,8 @@
             <!-- End Users By Device Stats -->
           </div>
         </div>
+
+        <!--caixa 5 fim-->
 
 
       </main>
@@ -1023,75 +1046,9 @@
   <script src="dash/scripts/shards-dashboards.1.1.0.min.js"></script>
   <script src="dash/scripts/app/app-blog-overview.1.1.0.js"></script>
   <script src="dash/scripts/main.js"></script>
+  <script src="dash/scripts/req.js"></script>
 
 
 </body>
 
 </html>
-<script>
-  carregarUsuario();
-
-  function carregarUsuario() {
-    $.ajax({
-      cache: false,
-      method: "get",
-      url: "/login/sessao",
-      success: function (data) {
-        $('#b_usuario').html(data.nome);
-        $('#div_usuario').show();
-      },
-      error: function (e) {
-        window.location.href = 'login.html';
-      }
-    });
-  }
-
-</script>
-
-<script>
-
-  function selecionarCaixa(evt, caixaNr) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-
-    // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-
-    // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-
-  };
-</script>
-
-<script>
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(caixaNr).style.display = "block";
-  evt.currentTarget.className += " active";
-
-
-  function iniciar(){
-  estatisticas();
-}
-
-function estatisticas() { 
-$.ajax({
-  cache: false,
-      method: "get",
-      url: "/login/sessao",
-      success: function (data) {
-        $('#testeHD').html(data.nome);
-        console.log("dsdsd")
-        $('#testeHD').show();
-      },
-      error: function (e) {
-        console.log("TAesres")
-      }
-})
-} 
-</script>
