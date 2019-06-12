@@ -14,13 +14,13 @@ router.post('/', (req, res, next) => {
 		
 		// após o body, são os nomes dos campos no formulário	
 		const {login, password} = req.body;
-		//console.log('Login do cara: ', login);
+		console.log('Login do cara: ', login);
 		const msgErro = {'mensagem': 'Login e/ou senha inválidos!'};
-		//console.log('senha do cara: ',password);
+		console.log('senha do cara: ',password);
 
 
 		if (isNull(login) || isNull(password)) {
-			//console.log('Login e/ou senha inválidos');
+			console.log('Login e/ou senha inválidos');
 			console.log('error');
 			res.render('login', msgErro);
 		} else {
