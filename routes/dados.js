@@ -94,7 +94,7 @@ router.get("/nomeCpu", (req, res, next) => {
 
   //dados para o grafico
 
-  router.get("/dadosQuase", (req, res, next) => {
+ /* router.get("/dadosQuase", (req, res, next) => {
     Database.query(
       console.log('HD E CPU')
       `SELECT H.PORCETAGEM_USO as HD_QTDUSO, 
@@ -117,5 +117,74 @@ router.get("/nomeCpu", (req, res, next) => {
           .json({ error: `erro na consulta junto ao banco de dados ${error}` });
       });
   });
+
+*/
+
+  router.get("/ultimasHD", (req, res, next) => {
+      Database.query(
+        `SELECT DISTINCT TOP 10 PORCETAGEM_USO, 
+        DATA_CADASTRO
+        FROM TBD_HD
+      ORDER BY DATA_CADASTRO DESC`
+      )
+        .then(resultados => {
+          resultados = resultados.recordsets[0];
+         // ultimo = resultados[9].idDado;
+          //primeiro = resultados[0].idDado;
+          //console.log(resultados);
+          res.json(resultados);
+        })
+        .catch(error => {
+          console.log(error);
+          res
+            .status(400)
+            .json({ error: `erro na consulta junto ao banco de dados ${error}` });
+        });
+  }); 
+
+  router.get("/ultimasCPU", (req, res, next) => {
+    Database.query(
+      `SELECT DISTINCT TOP 10 PORCENTAGEM_USO, 
+      DATA_CADASTRO
+      FROM TBD_PROCESSADOR
+      ORDER BY DATA_CADASTRO DESC`
+    )
+      .then(resultados => {
+        resultados = resultados.recordsets[0];
+       // ultimo = resultados[9].idDado;
+        //primeiro = resultados[0].idDado;
+        //console.log(resultados);
+        res.json(resultados);
+      })
+      .catch(error => {
+        console.log(error);
+        res
+          .status(400)
+          .json({ error: `erro na consulta junto ao banco de dados ${error}` });
+      });
+}); 
+
+router.get("/ultimasRam", (req, res, next) => {
+  Database.query(
+    `SELECT DISTINCT TOP 10 PORCENTAGEM_USO, 
+    DATA_CADASTRO
+    FROM TBD_MEMORIA
+    ORDER BY DATA_CADASTRO DESC`
+  )
+    .then(resultados => {
+      resultados = resultados.recordsets[0];
+     // ultimo = resultados[9].idDado;
+      //primeiro = resultados[0].idDado;
+      //console.log(resultados);
+      res.json(resultados);
+    })
+    .catch(error => {
+      console.log(error);
+      res
+        .status(400)
+        .json({ error: `erro na consulta junto ao banco de dados ${error}` });
+    });
+}); 
+
 
 module.exports = router;
